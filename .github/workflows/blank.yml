@@ -1,6 +1,16 @@
 on: issue_comment
 
 jobs:
+  check-pr-command:
+    runs-on: ubuntu-latest
+    outputs:
+      triggered: ${{ steps.check.outputs.triggered }}
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: 'build commerce pr'
+
   pr_commented:
     # This job only runs for pull request comments
     name: PR comment
