@@ -16,6 +16,7 @@ jobs:
     # This job only runs for pull request comments
     name: PR comment
     runs-on: ubuntu-latest
+    needs: check-pr-command
     steps:
       - run: |
           echo "Comment on PR #${{ github.event.issue.number }}"
